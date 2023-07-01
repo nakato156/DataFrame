@@ -1,0 +1,4 @@
+dataframe.exe
+*.o
+.vscode
+*.csv
