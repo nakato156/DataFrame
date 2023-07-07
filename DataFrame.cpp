@@ -8,7 +8,11 @@ const char* DataFrameError::what() const throw() {
 	return msg.c_str();
 }
 
+
 // Valor
+Valor::operator bool() const { 
+	return data == "True" || data == "true";
+}
 template <typename T>
 T Valor::get() const { 
 	std::istringstream iss(data);
@@ -128,7 +132,7 @@ Columna& DataFrame::getCol(const string col){
 
 Columna& DataFrame::operator[](const string col){ return getCol(col); }
 Fila DataFrame::getRow(int i) { return filas[i]; }  
-
+vector<string> DataFrame::getColumnas(){ return nombre_columnas; }
 void DataFrame::parseHeader() { 
 	auto it = data.begin();  
 	vector<string> header = procesarLinea(*it); 

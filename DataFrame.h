@@ -27,6 +27,7 @@ public:
     operator std::string() const { return data; }
     operator float() const { return std::stof(data.c_str()); }
     operator int() const { return std::stoi(data.c_str()); }
+	operator bool() const;
 	friend std::ostream& operator<<(std::ostream& os, const Valor& val) {
 		os << val.data;
 		return os;
@@ -95,7 +96,7 @@ public:
     Columna& operator[](const std::string col);
 	Fila getRow(int i); 
 	Fila& operator[](int i) { return filas[i]; }
-
+	std::vector<std::string> getColumnas();
 private:
 	void parseHeader();
 	std::vector<std::string> procesarLinea(std::string linea);
